@@ -7,11 +7,6 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.stem.wordnet import WordNetLemmatizer 
 import stanfordnlp
 
-# Make sure you have downloaded the StanfordNLP English model and other essential tools using,
-# stanfordnlp.download('en')
-# nltk.download('stopwords')
-# nltk.download('punkt')
-# nltk.download('averaged_perceptron_tagger')
 
 def aspect_sentiment_analysis(txt, stop_words, nlp):
     
@@ -47,9 +42,7 @@ def aspect_sentiment_analysis(txt, stop_words, nlp):
         wordsList = [w for w in new_txt_list if not w in stop_words]
         taggedList = nltk.pos_tag(wordsList)
 
-        doc = nlp(finaltxt) # Object of Stanford NLP Pipeleine
-        
-        # Getting the dependency relations betwwen the words
+        doc = nlp(finaltxt)
         dep_node = []
         for dep_edge in doc.sentences[0].dependencies:
             dep_node.append([dep_edge[2].text, dep_edge[0].index, dep_edge[1]])
